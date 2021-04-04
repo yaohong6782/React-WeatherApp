@@ -7,7 +7,7 @@ const Forecast = () => {
 
     let [city, setCity] = useState('');
     let [unit, setUnit] = useState('imperial');
-    //const uriEncodedCity = encodeURIComponent(city);
+    const uriEncodedCity = encodeURIComponent(city);
     let [responseObj, setResponseObj] = useState({});
     let [error, setError] = useState(false);
     let [loading, setLoading] = useState(false);
