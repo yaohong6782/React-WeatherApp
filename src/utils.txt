@@ -1,3 +1,0 @@
-api-key = 378643e0ddmsh13788a3f62a4903p15740ajsn511955b96886
-
-api-host = community-open-weather-map.p.rapidapi.com

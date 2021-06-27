@@ -7,7 +7,7 @@ const Forecast = () => {
 
     let [city, setCity] = useState('');
     let [unit, setUnit] = useState('imperial');
-    //const uriEncodedCity = encodeURIComponent(city);
+    const uriEncodedCity = encodeURIComponent(city);
     let [responseObj, setResponseObj] = useState({});
     let [error, setError] = useState(false);
     let [loading, setLoading] = useState(false);
@@ -21,7 +21,7 @@ const Forecast = () => {
         setError(false);
         setResponseObj({});
 
-        setLoading(true); 
+        setLoading(true);
         let uriEncodedCity = encodeURIComponent(city);
         fetch(`https://community-open-weather-map.p.rapidapi.com/weather?&q=${uriEncodedCity}&units=${unit}`, {
             "method": "GET",
@@ -37,9 +37,10 @@ const Forecast = () => {
             // So now u will have smthing like .then.then
         }).then(res => res.json())
             .then(response => {
-                if (response.cod !== 200){
+                if (response.cod !== 200) {
                     throw new Error();
                 }
+                console.log(response);
                 setResponseObj(response);
                 setLoading(false);
 
@@ -84,16 +85,18 @@ const Forecast = () => {
                             value="metric"
                             onChange={(e) => setUnit(e.target.value)}
                         />
-                        Celcius &nbsp;
+                        Celsius &nbsp;
                     </label>
 
-                    <button type="submit" className={classes.Button}> Get Forecast</button>
+                    <button type = "submit" className={classes.Button}>
+                        Get Forecast
+                    </button>
                 </form>
 
                 <Conditions
                     responseObj={responseObj}
-                    error = {error}
-                    loading = {loading}
+                    error={error}
+                    loading={loading}
                 />
 
             </div>
